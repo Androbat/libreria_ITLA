@@ -1,12 +1,13 @@
 class Catalogo:
 
-    libros = [
-        {'Nombre': ['Rayuela'], 'Autor': ['Julio Cortazar']}
-    ]
+    def __init__(self):
 
-    audio_libros = [
-        {'Nombre:': ['El Cambio'], 'Autor:':['Wayne Dyer']}
-    ]
+        self.libros = {"dan brown":["Digital Fortress"]}
+    
+        self.audio_libros = [
+            {'Nombre:': ['El Cambio'], 'Autor:':['Wayne Dyer']}
+        ]
+
 
     def menu_catalogo(self):
         print("""
@@ -47,12 +48,17 @@ class Catalogo:
 
     def agregar_libro(self):
         # Encuentra una forma de agregar una nueva key, value al dict.
+        agregar_autor = input("agregue autor: ")
         agregar_nombre = input('Agregue un nombre: ')
-        agregar_autor = input()
-        #self.libros['nombre']
+        
+
+        if agregar_autor in self.libros:
+            self.libros[agregar_autor].append(agregar_nombre)
+        else:
+            self.libros[agregar_autor] = []
+            self.libros[agregar_autor].append(agregar_nombre)
 
         print(self.libros)
-
     def mostrar_libros(self):
         # Mostrar libro
         for key, value in self.libros[0].items():
@@ -84,4 +90,4 @@ class Catalogo:
 
 
 cliente = Catalogo()
-cliente.mostrar_audio_libros()
+cliente.menu_catalogo()
